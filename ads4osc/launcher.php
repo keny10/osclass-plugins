@@ -10,6 +10,7 @@
             $ad['pk_i_id'] = $ads->create_ad(Params::getParam('ads-code'));
             $ads->update_ad($ad);
             require 'edit.php';
+			//echo htmlentities(Params::getParam('ads-code'));
             break;
     
         case 'save-settings':
@@ -58,8 +59,8 @@
             if($ad['s_network']=='adsense') {
                 $ad['s_code'] = preg_replace('|google_ad_client = "([^"]+)|', 'google_ad_client = "'.$ad['s_account_id'], $ad['s_code']);
                 $ad['s_code'] = preg_replace('|google_ad_slot = "([^"]+)|', 'google_ad_slot = "'.$ad['s_slot_id'], $ad['s_code']);
-                $ad['s_code'] = preg_replace('|google_ad_width = ([0-9]+)|', 'google_ad_width = '.$ad['i_ad_width'], $ad['s_code']);
-                $ad['s_code'] = preg_replace('|google_ad_height = ([0-9]+)|', 'google_ad_height = '.$ad['i_ad_height'], $ad['s_code']);
+                $ad['s_code'] = preg_replace('|google_ad_width = ([0-9]+)|', 'google_ad_width = "'.$ad['i_ad_width'], $ad['s_code']);
+                $ad['s_code'] = preg_replace('|google_ad_height = ([0-9]+)|', 'google_ad_height = "'.$ad['i_ad_height'], $ad['s_code']);
             }
             
             $ads->update_ad($ad);
