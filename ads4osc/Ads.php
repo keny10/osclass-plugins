@@ -16,7 +16,7 @@ class Ads {
 
     public function create_ad($code = '') {
         $conn = getConnection();
-        $conn->osc_dbExec(sprintf("INSERT INTO  %st_ads4osc_ads (`s_code`) VALUES ('".$code."')", DB_TABLE_PREFIX));
+        $conn->osc_dbExec(sprintf("INSERT INTO  %st_ads4osc_ads (`s_code`) VALUES ('".addslashes($code)."')", DB_TABLE_PREFIX));
         $ad = $conn->osc_dbFetchResult(sprintf("SELECT pk_i_id FROM %st_ads4osc_ads ORDER BY pk_i_id DESC LIMIT 1", DB_TABLE_PREFIX));
         return $ad['pk_i_id'];
     }
@@ -24,7 +24,7 @@ class Ads {
     public function update_ad($ad = null) {
         if($ad!=null) {
             $conn = getConnection();
-            $conn->osc_dbExec(sprintf("UPDATE  %st_ads4osc_ads SET  `s_network` =  '%s', `s_title` =  '%s', `s_account_id` =  '%s', `s_partner_id` =  '%s', `s_slot_id` =  '%s', `i_max_ads_per_page` =  %d, `e_ad_type` =  '%s', `f_weight` = %f, `i_ad_width` =  %d, `i_ad_height` =  %d, `s_ad_format` = '%s', `s_html_before` =  '%s', `s_code` =  '%s', `s_html_after` =  '%s' WHERE  pk_i_id = %d LIMIT 1 ;", DB_TABLE_PREFIX, $ad['s_network'], $ad['s_title'], $ad['s_account_id'], $ad['s_partner_id'], $ad['s_slot_id'], $ad['i_max_ads_per_page'], $ad['e_ad_type'], $ad['f_weight'], $ad['i_ad_width'], $ad['i_ad_height'], $ad['s_ad_format'], $ad['s_html_before'], $ad['s_code'], $ad['s_html_after'], $ad['pk_i_id']));
+            $conn->osc_dbExec(sprintf("UPDATE  %st_ads4osc_ads SET  `s_network` =  '%s', `s_title` =  '%s', `s_account_id` =  '%s', `s_partner_id` =  '%s', `s_slot_id` =  '%s', `i_max_ads_per_page` =  %d, `e_ad_type` =  '%s', `f_weight` = %f, `i_ad_width` =  %d, `i_ad_height` =  %d, `s_ad_format` = '%s', `s_html_before` =  '%s', `s_code` =  '%s', `s_html_after` =  '%s' WHERE  pk_i_id = %d LIMIT 1 ;", DB_TABLE_PREFIX, $ad['s_network'], $ad['s_title'], $ad['s_account_id'], $ad['s_partner_id'], $ad['s_slot_id'], $ad['i_max_ads_per_page'], $ad['e_ad_type'], $ad['f_weight'], $ad['i_ad_width'], $ad['i_ad_height'], $ad['s_ad_format'], $ad['s_html_before'], addslashes($ad['s_code']), $ad['s_html_after'], $ad['pk_i_id']));
         }
     }
     

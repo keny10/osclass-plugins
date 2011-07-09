@@ -7,7 +7,7 @@
 		<p><h3><?php _e('Step 1: Import Your Ad Code', 'ads4osc'); ?></h3></p>
 		<p><?php _e('Simply <strong>paste your Ad Code below</strong> and Import!', 'ads4osc'); ?></p>
 		<label><?php _e('Code', 'ads4osc'); ?></label><br />
-		<textarea rows="8" cols="60" name="ads-code" tabindex="6"></textarea>
+		<textarea rows="8" cols="60" name="ads-code" id="ads-code" tabindex="6"></textarea>
 		<p><span style="font-size:small;color:gray;"><?php _e('Ads 4 OSClass will detect if the code is from a supported ad network (currently only Google Adsense).', 'ads4osc'); ?></span></p>
 				<div>
 					<input type="submit" value="<?php _e('Import', 'ads4osc'); ?>" />
